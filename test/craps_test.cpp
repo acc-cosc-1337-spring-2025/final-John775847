@@ -64,12 +64,57 @@ TEST_CASE("Test ComeOutPhase"){
 
     do{
         rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 11);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::natural);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
     }while(rolls->roll_value() != 2);
     REQUIRE(phase1.get_outcome(rolls) == RollOutcome::craps);
 
     do{
         rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 3);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::craps);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 12);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::craps);
+
+    // do{
+    //     rolls = shoot.throw_dice(die1, die2);
+    // }while(rolls->roll_value() != 1);
+    // REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
     }while(rolls->roll_value() != 4);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 5);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 6);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 8);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 9);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 10);
     REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
 }
 
@@ -90,8 +135,53 @@ TEST_CASE("Test PointPhase"){
     }while(rolls->roll_value() != 7);
     REQUIRE(phase2.get_outcome(rolls) == RollOutcome::seven_out);
 
+    // do{
+    //     rolls = shoot.throw_dice(die1, die2);
+    // }while(rolls->roll_value() != 1);
+    // REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 2);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 3);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
     do{
         rolls = shoot.throw_dice(die1, die2);
     }while(rolls->roll_value() != 4);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 5);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 6);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 9);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 10);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 11);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 12);
     REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
 }
