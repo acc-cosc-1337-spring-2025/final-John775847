@@ -12,5 +12,6 @@ class Roll : public Die{
         Die& die1_;
         Die& die2_;
         int rolled_value_;
+        void display_dice(int die1, int die2);
 };
 #endif

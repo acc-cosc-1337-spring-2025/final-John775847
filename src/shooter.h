@@ -14,6 +14,6 @@ class Shooter : public Roll{
         void display_rolled_values();
     private:
         std::vector<Roll*> rolls;
-        void display_dice(int die1, int die2);
+        // void display_dice(int die1, int die2);
 };
 #endif

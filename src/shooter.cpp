@@ -23,10 +23,4 @@ void Shooter::display_rolled_values(){
     std::cout<<"\n";
 }
 
-void Shooter::display_dice(int die1, int die2){
-    std::cout<<"   ____     ____ \n";
-    std::cout<<"  /___/|   /___/| \n";
-    std::cout<<"  | "<<die1<<" |/   | "<<die2<<" |/ \n";
-    std::cout<<"   ----     ----";
-    std::cout<<"\n\tTotal: "<<die1+die2<<"\n";
-}
+

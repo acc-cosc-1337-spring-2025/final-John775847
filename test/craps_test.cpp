@@ -43,44 +43,55 @@ TEST_CASE("Test Roll"){
 TEST_CASE("Test Shooter"){
     Die die1, die2;
     Shooter shoot(die1, die2);
-    Roll* shooter_roll = shoot.throw_dice(die1, die2);
     for(int i; i <= 10; i++){
+        Roll* shooter_roll = shoot.throw_dice(die1, die2);
         REQUIRE(shooter_roll->roll_value() >= 2);
         REQUIRE(shooter_roll->roll_value() <= 12);
     }
 }
 
-TEST_CASE("Test display dice") {
+TEST_CASE("Test ComeOutPhase"){
     Die die1, die2;
-    // game.display_dice(5, 6);
-    REQUIRE(true == true);
+    Shooter shoot(die1, die2);
+
+    ComeOutPhase phase1;
+
+    Roll* rolls;
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 7);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::natural);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 2);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::craps);
+
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 4);
+    REQUIRE(phase1.get_outcome(rolls) == RollOutcome::point);
 }
 
+TEST_CASE("Test PointPhase"){
+    Die die1, die2;
+    Shooter shoot(die1, die2);
 
-// TEST_CASE("Test game"){
-//     Phase1 game;
-//     int die1, die2;
-//     die1=3;
-//     die2=4;
+    PointPhase phase2(8);
 
-//     phase 0 (main)
-//     initial bets
+    Roll* rolls;
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 8);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::point);
 
-//     phase 1
-//     set bet
-//     set guess
-//     roll
-//     if 7, game end, money to dealer
-//     if under line, roll again, under line guesser wins
-//     if above line, mark position, above line guesser wins, move to phase 2
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 7);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::seven_out);
 
-//     phase 2
-//     set bet
-//     set guess
-//     roll
-//     if 7, game end, money to dealer
-//     if marked position, game end, money to player
-//     if under line, roll again, under line guesser wins
-//     if above line, roll again, above line gueesser wins
-
-// }
+    do{
+        rolls = shoot.throw_dice(die1, die2);
+    }while(rolls->roll_value() != 4);
+    REQUIRE(phase2.get_outcome(rolls) == RollOutcome::nopoint);
+}
