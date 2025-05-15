@@ -13,40 +13,36 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("Test dice limits Phase1") {
-    Phase1 game;
-	int die1, die2;
+TEST_CASE("Test Dic") {
+    Die die1, die2;
+    int roll1, roll2;
 
-    for(int i; i =< 10; i++){
-        game.roll_dice(die1, die2);
-        REQUIRE(die1 > 0);
-        REQUIRE(die1 <= 6);
-        REQUIRE(die2 > 0);
-        REQUIRE(die2 <= 6);
-        REQUIRE(die1 + die2 > 0);
-        REQUIRE(die1 + die1 <= 12);
+    for(int i; i <= 10; i++){
+        roll1 = die1.roll_dice();
+        roll2 = die2.roll_dice();
+        REQUIRE(roll1 > 0);
+        REQUIRE(roll1 <= 6);
+        REQUIRE(roll2 > 0);
+        REQUIRE(roll2 <= 6);
+        REQUIRE(roll1 + roll2 > 0);
+        REQUIRE(roll1 + roll2 <= 12);
     }
 	//repitition because the "input" is random.
 }
 
-TEST_CASE("Test dice limits Phase2") {
-    Phase2 game(7);
-    int die1, die2;
-
-    for(int i; i =< 10; i++){
-        game.roll_dice(die1, die2);
-        REQUIRE(die1 > 0);
-        REQUIRE(die1 <= 6);
-        REQUIRE(die2 > 0);
-        REQUIRE(die2 <= 6);
-        REQUIRE(die1 + die2 > 0);
-        REQUIRE(die1 + die1 <= 12);
+TEST_CASE("Test Roll"){
+    Die die1, die2;
+    Roll rolls(die1, die2);
+    for(int i; i <= 10; i++){
+        rolls.roll_dice();
+        REQUIRE(rolls.roll_value() >= 2);
+        REQUIRE(rolls.roll_value() <= 12);
     }
 }
 
 TEST_CASE("Test display dice") {
-    Phase1 game;
-    game.display_dice(5, 6);
+    Die die1, die2;
+    // game.display_dice(5, 6);
     REQUIRE(true == true);
 }
 
