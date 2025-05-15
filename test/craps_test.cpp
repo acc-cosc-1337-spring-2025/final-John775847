@@ -40,6 +40,16 @@ TEST_CASE("Test Roll"){
     }
 }
 
+TEST_CASE("Test Shooter"){
+    Die die1, die2;
+    Shooter shoot(die1, die2);
+    Roll* shooter_roll = shoot.throw_dice(die1, die2);
+    for(int i; i <= 10; i++){
+        REQUIRE(shooter_roll->roll_value() >= 2);
+        REQUIRE(shooter_roll->roll_value() <= 12);
+    }
+}
+
 TEST_CASE("Test display dice") {
     Die die1, die2;
     // game.display_dice(5, 6);
